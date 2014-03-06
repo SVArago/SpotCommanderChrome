@@ -3,7 +3,7 @@
 
 	"name": "Spotcommander",
 	"description": "Chrome App for Spotcommander",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"icons": {
 		"128": "icons/icon_128.png"
 	},
