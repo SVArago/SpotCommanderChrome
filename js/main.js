@@ -16,14 +16,13 @@ function stripslashes(str) {
 
 jQuery(document).ready(function($) {
 	manifest = chrome.runtime.getManifest();
-
 	$('title').text(manifest.name + " v" + manifest.version);
+	$('.window-border .title').text(manifest.name + " v" + manifest.version);
 
 
 	oldSong = '';
 	notificationname = 'Spotify-chrome';
 	notificationi = 0
-	setNotfication = false;
 	function getSong(){
 		$.ajax({
 			url: "https://www.arago.utwente.nl/spotcommander/nowplaying.php",
@@ -62,13 +61,10 @@ jQuery(document).ready(function($) {
 					var blob = this.response;
 					options.iconUrl = window.URL.createObjectURL(blob);
 					notificationi == 0 || chrome.notifications.clear(notificationname + notificationi, function(){});
-					chrome.notifications.create(notificationname + (notificationi++), options, function(){});
-					// if (setNotfication) {
-					// 	chrome.notifications.update(notificationid, options, function(){ console.log('update')});
-					// } else {
-					// 	chrome.notifications.create(notificationid, options, function(){});
-					// 	setNotfication = true;
-					// }
+					console.log('Cleared notication', notificationname + notificationi);
+					notificationi++;
+					chrome.notifications.create(notificationname + notificationi, options, function(){});
+					console.log('Generated notication', notificationname + notificationi);
 				}
 				xhr.send(null);
 
