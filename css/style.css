@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 html,
 body {
 	padding: 0;
@@ -7,15 +10,25 @@ body {
 body {
 	position: relative;
 }
-* {
-	box-sizing: border-box;
-}
+
+/** Window Border */
 .window-border {
 	-webkit-app-region: drag;
 	height: 50px;
 	background: #303030;
 	border-bottom: 1px solid white;
 }
+
+/** Window title */
+.window-border .title {
+	color: #FFF;
+	font-size: 1.5em;
+	padding: 0 0 0 10px;
+	line-height: 50px;
+	vertical-align: middle;
+}
+
+/** Controls */
 .window-border .controls {
 	position: absolute;
 	height: 30px;
@@ -24,20 +37,23 @@ body {
 	bottom: 10px;
 	width: 105px;
 }
-
 .window-border .controls .control {
 	float: left;
 	cursor: pointer;
 	width: 30px;
 	height: 30px;
 	margin-left: 5px;
-	background-color: red;
 }
-
+.control.minimize {
+	background: yellow url('../icons/window/minimize.png');
+}
+.control.maximize {
+	background: limegreen url('../icons/window/maximize.png');
+}
 .control.close {
 	background: red url('../icons/window/close.png');
 }
-.window-body {
+main {
 	position: absolute;
 	top: 50px;
 	bottom: 0;
